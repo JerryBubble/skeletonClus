@@ -7,10 +7,10 @@ Skeleton Clustering R package
 > Zeyu Wei, and Yen-Chi Chen. "Skeleton Clustering: Dimension-Free Density-based Clustering." 2021.
 
 The manuscript of the paper can be found at [here]().
----
+
 
 The follwoing figure illustrates the overall procedure of the skeleton clustering method.
-<div style = "text-align:center" align="center"> <img src="https://jerrybubble.github.io/images/skeletonWorkFlow.jpg" width = "300"/> </div>
+<div style = "text-align:center" align="center"> <img src="https://jerrybubble.github.io/images/skeletonWorkFlow.jpg" width = "600"/> </div>
 
 Starting with a collection of observations (panel (a)),
 we first find knots, the representative points of the entire data (panel (b)). By default we use the $k$-means algorithm to choose knots. 
@@ -20,7 +20,7 @@ For each edge in the graph, we compute a density-based similarity measure that q
 For the next step we segment knots into groups based on a linkage criterion (single linkage in this example), leading to the dendrogram in panel (e). 
 Finally, we choose a threshold that cuts the dendrogram into $S = 2$ clusters (panel (f))
 and assign cluster label to each observation according to the knot-cluster that it belongs to (panel (g)).
----
+
 
 ## Installation 
 The package currently only exists on github. Installed directly from this repo with help from the [devtools](https://github.com/hadley/devtools) package. Run the following in R:
@@ -44,13 +44,19 @@ dat = Yinyang_data(d = 100)
 X0 = dat$data
 y0 = dat$clus
 ```
+Other simulation data used in the skeleton clustering paper can be genereted similarly: __Mickey_data()__ for Mickey data, __MM_data()__ for Manifold Mixture data, __MixMickey_data()__ for Mix Mickey data, __MixStar_data()__ for mixture of three Gaussian cluster giving a star shape, and __ring_data()__ for Ring data
 
-Construct weighted skeleton with overfitting k-means
+Also, with `set.seed(1234)` the 1000-dimensional simulated datasets are also built into the skeletonClus package, with names `Yinyang1000, Ring1000, Mickey1000, MixMickey1000, MixStar1000, ManifoldMix1000`. Those built in datasets can be load into R working environment by
+```R
+data(Yinyang1000)
+```
+
+We proceed with constructing the weighted skeleton with overfitting k-means, wihch can be donw with the `skeletonCons` function:
 ```R
 skeleton = skeletonCons(X0, rep = 1000)
 ```
 
-For more flexible usage of skeletonCons do 
+For more flexible usage of skeletonCons see the help page at
 ```R
 ?skeletonCons
 ```
@@ -60,7 +66,8 @@ skeleton$centers
 skeleton$voron_weights
 ```
 The Face density, Tube density, and Average Distance density weights can be accessed in similar fashion. We then segment the knots based on the edge weights with hierarchical clustering (taking Voronoi density for example):
-```
+
+```R
 ##turn similarity into distance
 VD_tmp = max(skeleton$voron_weights) - skeleton$voron_weights 
 diag(VD_tmp) = 0

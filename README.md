@@ -10,10 +10,10 @@ The manuscript of the paper can be found at [here]().
 
 
 The follwoing figure illustrates the overall procedure of the skeleton clustering method.
-<div style = "text-align:center" align="center"> <img src="https://jerrybubble.github.io/images/skeletonWorkFlow.jpg" width = "600"/> </div>
+<div style = "text-align:center" align="center"> <img src="https://jerrybubble.github.io/images/skeletonWorkFlow.jpg" width = "660"/> </div>
 
 Starting with a collection of observations (panel (a)),
-we first find knots, the representative points of the entire data (panel (b)). By default we use the $k$-means algorithm to choose knots. 
+we first find knots, the representative points of the entire data (panel (b)). By default we use the k-means algorithm to choose knots. 
 Then we compute the corresponding Voronoi cells induced by the knots (panel (c))
 and the edges associating the Voronoi cells (panel (d), this is the Delaunay triangulation). 
 For each edge in the graph, we compute a density-based similarity measure that quantifies the closeness of each pair of knots.
@@ -44,7 +44,7 @@ dat = Yinyang_data(d = 100)
 X0 = dat$data
 y0 = dat$clus
 ```
-Other simulation data used in the skeleton clustering paper can be genereted similarly: __Mickey_data()__ for Mickey data, __MM_data()__ for Manifold Mixture data, __MixMickey_data()__ for Mix Mickey data, __MixStar_data()__ for mixture of three Gaussian cluster giving a star shape, and __ring_data()__ for Ring data
+Other simulation data used in the skeleton clustering paper can be genereted similarly: `Mickey_data()` for Mickey data, `MM_data()` for Manifold Mixture data, `MixMickey_data()` for Mix Mickey data, `MixStar_data()` for mixture of three Gaussian cluster giving a star shape, and `ring_data()` for Ring data
 
 Also, with `set.seed(1234)` the 1000-dimensional simulated datasets are also built into the skeletonClus package, with names `Yinyang1000, Ring1000, Mickey1000, MixMickey1000, MixStar1000, ManifoldMix1000`. Those built in datasets can be load into R working environment by
 ```R

@@ -1,12 +1,14 @@
 # skeletonClus
+
 Skeleton Clustering R package
+
 [![LifeCycle Status](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://deploy-preview-81--tidyverse-org.netlify.com/lifecycle/#maturing)
 
 
 `skeletonClus` is [R package](https://www.r-project.org/package) implementing the **Skeleton Clustering** methods in : 
 > Zeyu Wei, and Yen-Chi Chen. "Skeleton Clustering: Dimension-Free Density-based Clustering." 2021.
 
-The manuscript of the paper can be found at [here]().
+The manuscript of the paper can be found at [here](https://arxiv.org/abs/2104.10770).
 
 
 The follwoing figure illustrates the overall procedure of the skeleton clustering method.
